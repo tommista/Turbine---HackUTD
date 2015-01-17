@@ -1,9 +1,11 @@
 package tommista.com.turbine;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import timber.log.Timber;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -11,6 +13,13 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        } else {
+            // TODO eventually put remote logging into a tree and put here.
+        }
+
         setContentView(R.layout.activity_main);
     }
 
@@ -31,6 +40,8 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Timber.i("action button hit");
+            setContentView(R.layout.settings_view);
             return true;
         }
 
