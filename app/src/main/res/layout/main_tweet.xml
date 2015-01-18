@@ -8,10 +8,11 @@
 
     <ImageView
         android:id="@+id/main_image_view"
-        android:layout_width="50dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"/>
+        android:layout_alignParentLeft="true"
+        android:paddingRight="50dp"/>
 
     <TextView
         android:id="@+id/main_handle_text_view"
@@ -29,6 +30,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:textColor="@android:color/black"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:autoLink="web"
+        android:layout_toRightOf="@id/main_image_view"
+        android:lines="3"/>
 
 </RelativeLayout>
