@@ -21,15 +21,8 @@ public class HandleManager {
 
     private HandleManager() {
         handleList = new ArrayList<Handle>();
-
-
-        //creating and adding test handles
-        Handle test1 = new Handle("@Test1");
-        Handle test2 = new Handle("@Test2");
-        Handle test3 = new Handle("@Test3");
-        addHandle(test1);
-        addHandle(test2);
-        addHandle(test3);
+        handleList.add(new Handle("@thomasbrown333"));
+        handleList.add(new Handle("@jberidon"));
     }
 
     public void addHandle(Handle handle) {

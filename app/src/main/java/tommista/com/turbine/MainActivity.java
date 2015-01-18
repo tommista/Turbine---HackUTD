@@ -10,6 +10,8 @@ import timber.log.Timber;
 
 public class MainActivity extends ActionBarActivity {
 
+    public DataFetcher dataFetcher;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,9 +22,47 @@ public class MainActivity extends ActionBarActivity {
             // TODO eventually put remote logging into a tree and put here.
         }
 
-        setContentView(R.layout.activity_main);
+        dataFetcher = new DataFetcher(this);
+
+        Timber.i("asdf");
+        /*TwitterAPI twitterApi = TwitterAPI.getInstance();
+
+        twitterApi.timelineServices.getUserTimeline("@thomasbrown333", 1, new Callback<List<Tweet>>() {
+            @Override
+            public void success(List<Tweet> list, Response response) {
+                Timber.i("success %d", list.size());
+                Timber.i("asdf " + list.get(0).toString());
+                String tempStr = list.get(0).toString();
+
+                Util.unshortenUrl(tempStr, new Callback<UnshortenResponse>() {
+                    @Override
+                    public void success(UnshortenResponse unshortenResponse, Response response2) {
+                        Timber.i("unshorten success: " + unshortenResponse.fullUrl);
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        Timber.i("unshorten failure");
+                        Timber.i(error.toString());
+                    }
+                });
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Timber.i("unfortunate failure");
+                Timber.i(error.toString());
+            }
+        });*/
+
+        setContentView(R.layout.main_view);
+
     }
 
+    public void refresh(){
+        setContentView(R.layout.main_view);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -42,6 +82,11 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             Timber.i("action button hit");
             setContentView(R.layout.settings_view);
+            return true;
+        }
+        else if(id == R.id.action_refresh){
+            Timber.i("refresh button hit");
+            dataFetcher.refreshButtonPressed();
             return true;
         }
 
