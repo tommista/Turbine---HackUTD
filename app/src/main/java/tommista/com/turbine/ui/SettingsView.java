@@ -52,18 +52,38 @@ public class SettingsView extends LinearLayout {
                 eText = (EditText) findViewById(R.id.edit_text);
 
 
+                Handle newHandle;
+                if((eText.getText() != null)&&(eText.getText().length()>0)){
+                    if (HandleManager.getInstance().getHandleList().size()==0){
+                        newHandle = new Handle(eText.getText().toString());
+                        HandleManager.getInstance().addHandle(newHandle);
+                        eText.setText("");
+                        adapter.notifyDataSetChanged();
 
-                if(eText.getText() == null){
+                    }
+                    else{
+                        for (Handle handle : HandleManager.getInstance().getHandleList()){
+                            if (handle.getTwitterHandle().compareTo(eText.getText().toString()) == 0) {
 
-                }else{
-                    Handle handle = new Handle(eText.getText().toString());
-                    HandleManager.getInstance().addHandle(handle);
-                    eText.setText("");
-                    adapter.notifyDataSetChanged();
+
+                            }
+                            else{
+                                newHandle = new Handle(eText.getText().toString());
+                                HandleManager.getInstance().addHandle(newHandle);
+                                eText.setText("");
+                                adapter.notifyDataSetChanged();
+                            }
+                        }
+
+                    }
+
+
+
+
+
+
 
                 }
-
-
             }
         });
 
