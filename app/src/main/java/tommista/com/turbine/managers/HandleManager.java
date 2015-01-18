@@ -38,7 +38,7 @@ public class HandleManager {
 
     public void deleteHandle(String handleName) {
 
-            for (Handle handle : handleList) {
+            for (Handle handle : getHandleList()) {
                 if (handle.getTwitterHandle().compareTo(handleName) == 0) {
                         TweetManager.getInstance().deleteTweetsByHandle(handle);
                         handleList.remove(handle);
@@ -51,7 +51,7 @@ public class HandleManager {
 
 
     public ArrayList<Handle> getHandleList(){
-        return handleList;
+        return new ArrayList<>(handleList);
     }
 
 
