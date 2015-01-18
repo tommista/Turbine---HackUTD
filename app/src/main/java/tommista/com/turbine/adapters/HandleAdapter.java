@@ -5,12 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import timber.log.Timber;
 import tommista.com.turbine.R;
+import tommista.com.turbine.managers.HandleManager;
 import tommista.com.turbine.models.Handle;
 
 /**
@@ -25,7 +27,7 @@ public class HandleAdapter extends ArrayAdapter<Handle>{
         super(context, R.layout.handle_view , handles);
     }
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         Handle handle = getItem(position);
         Timber.i("position=%d,handle=%s", position, handle.getTwitterHandle());
         /*if (convertView == null) {
@@ -42,6 +44,13 @@ public class HandleAdapter extends ArrayAdapter<Handle>{
 
 
         TextView handle_text= (TextView) convertView.findViewById(R.id.handle_text);
+        Button button = (Button) convertView.findViewById(R.id.del_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HandleManager.getInstance().deleteHandle(getItem(position).getTwitterHandle());
+            }
+        });
         handle_text.setText(handle.getTwitterHandle());
         return convertView;
     }

@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -21,7 +23,9 @@ public class SettingsView extends LinearLayout {
     private SettingsPresenter presenter;
     private Context context;
     private HandleAdapter adapter;
-
+    private Button addButton;
+    private EditText eText;
+    private Handle handle;
 
     public SettingsView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -36,12 +40,27 @@ public class SettingsView extends LinearLayout {
         ListView listView = (ListView) this.findViewById(R.id.listview);
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Handle handle = adapter.getItem(position);
-                HandleManager.getInstance().deleteHandle(handle.getTwitterHandle());
+        addButton = (Button) this.findViewById(R.id.add_button);
+
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eText = (EditText) findViewById(R.id.edit_text);
+                if(eText.getText() == null){
+
+                }else{
+
+                handle.setTwitterHandle(eText.getText().toString());
+                HandleManager.getInstance().addHandle(handle);
+                }
+
+
             }
         });
+
+
+
 
 
 
