@@ -39,7 +39,7 @@ public class TweetAdapter extends ArrayAdapter<Tweet>{
 
         imageView.setImageResource(R.drawable.box);
         handleTextView.setText(tweet.screenName);
-
+        urlTextView.setText(tweet.goodUrl);
         return convertView;
     }
 }

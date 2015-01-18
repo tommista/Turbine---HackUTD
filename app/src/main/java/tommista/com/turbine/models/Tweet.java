@@ -13,7 +13,10 @@ public class Tweet {
         this.profileImageURL = tweet.profileImageURL;
         this.screenName = tweet.screenName;
         this.tweetEntities = tweet.tweetEntities;
+        this.goodUrl = tweet.goodUrl;
     }
+
+    public String goodUrl;
 
     @SerializedName("id_str")
     public String tweetId;

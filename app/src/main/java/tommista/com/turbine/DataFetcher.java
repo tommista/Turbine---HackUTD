@@ -59,7 +59,7 @@ public class DataFetcher {
                                 if(!tweetManager.tweetExists(tweet)){
                                     Tweet newTweet = new Tweet(tweet);
                                     newTweet.screenName = handle.getTwitterHandle();
-
+                                    newTweet.goodUrl = expandedURL;
                                     tweetManager.addTweet(newTweet);
                                     mainActivity.refresh();
                                     Timber.i("added new tweet");
@@ -80,7 +80,7 @@ public class DataFetcher {
 
                                                 Tweet newTweet = new Tweet(tweet);
                                                 newTweet.screenName = handle.getTwitterHandle();
-
+                                                newTweet.goodUrl = url;
                                                 tweetManager.addTweet(newTweet);
                                                 mainActivity.refresh();
                                                 Timber.i("added new tweet");
