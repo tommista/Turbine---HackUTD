@@ -35,11 +35,11 @@
 
             <EditText
                 android:id="@+id/edit_text"
-                android:layout_width="230dp"
+                android:layout_width="408dp"
                 android:layout_height="50dp"
                 android:background="@drawable/text_view_style"
                 android:textColor="@android:color/black"
-                android:hint="Twitter Handle"
+                android:hint="  Twitter Handle"
                 android:lines="1"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight= "15dp"
