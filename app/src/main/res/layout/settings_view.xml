@@ -7,5 +7,41 @@
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_bright"
     >
+    <LinearLayout
+        android:id="@+id/ver_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/hor_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/add_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add">
+                <!--Button shit still needs to go here -->
+                </Button>
+
+            <EditText
+                android:id="@+id/add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--text field shit still needs to go here? -->
+                </EditText>
+
+                          </LinearLayout>
+
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/listview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            </ListView>
+
+        </LinearLayout>
+
 
 </tommista.com.turbine.ui.SettingsView>
