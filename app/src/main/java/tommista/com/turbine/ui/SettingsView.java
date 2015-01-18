@@ -58,7 +58,8 @@ public class SettingsView extends LinearLayout {
                 }else{
                     Handle handle = new Handle(eText.getText().toString());
                     HandleManager.getInstance().addHandle(handle);
-                    MainActivity.getInstance().resetSettings();
+                    eText.setText("");
+                    adapter.notifyDataSetChanged();
 
                 }
 
