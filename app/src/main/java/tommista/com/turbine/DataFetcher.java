@@ -21,10 +21,12 @@ public class DataFetcher {
 
     HandleManager handleManager;
     TweetManager tweetManager;
+    MainActivity mainActivity;
 
-    public DataFetcher(){
+    public DataFetcher(MainActivity mainActivity){
         handleManager = HandleManager.getInstance();
         tweetManager = TweetManager.getInstance();
+        this.mainActivity = mainActivity;
     }
 
     public void refreshButtonPressed(){
@@ -44,7 +46,7 @@ public class DataFetcher {
         TwitterAPI.getInstance().timelineServices.getUserTimeline(handle.getTwitterHandle(), 5, new Callback<List<Tweet>>() {
             @Override
             public void success(List<Tweet> list, Response response) {
-                Timber.i("Successfully downloaded timeline for %s", handle.getTwitterHandle());
+                Timber.i("Successfully downloaded timeline for %s with %d tweets", handle.getTwitterHandle(), list.size());
 
                 for(final Tweet tweet : list){
 
@@ -55,7 +57,11 @@ public class DataFetcher {
 
                             if(expandedURL.toLowerCase().contains("youtube") || expandedURL.toLowerCase().contains("spotify") || expandedURL.toLowerCase().contains("soundcloud")) {
                                 if(!tweetManager.tweetExists(tweet)){
-                                    tweetManager.addTweet(tweet);
+                                    Tweet newTweet = new Tweet(tweet);
+                                    newTweet.screenName = handle.getTwitterHandle();
+
+                                    tweetManager.addTweet(newTweet);
+                                    mainActivity.refresh();
                                     Timber.i("added new tweet");
                                 }
                             }else{
@@ -65,9 +71,18 @@ public class DataFetcher {
                                         String url = unshortenResponse.fullUrl;
                                         Timber.i("successfully shortened url: " + url);
 
+                                        if(url == null){
+                                            return;
+                                        }
+
                                         if(url.toLowerCase().contains("youtube") || url.toLowerCase().contains("spotify") || url.toLowerCase().contains("soundcloud")){
                                             if(!tweetManager.tweetExists(tweet)){
-                                                tweetManager.addTweet(tweet);
+
+                                                Tweet newTweet = new Tweet(tweet);
+                                                newTweet.screenName = handle.getTwitterHandle();
+
+                                                tweetManager.addTweet(newTweet);
+                                                mainActivity.refresh();
                                                 Timber.i("added new tweet");
                                             }
                                         }

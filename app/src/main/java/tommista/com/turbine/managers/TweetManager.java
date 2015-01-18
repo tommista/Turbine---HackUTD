@@ -1,5 +1,6 @@
 package tommista.com.turbine.managers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import tommista.com.turbine.models.Tweet;
@@ -29,5 +30,9 @@ public class TweetManager {
 
     public boolean tweetExists(Tweet tweet){
         return (tweetMap.get(tweet.tweetId) != null);
+    }
+
+    public ArrayList<Tweet> getTweetList(){
+        return new ArrayList<Tweet>(tweetMap.values());
     }
 }

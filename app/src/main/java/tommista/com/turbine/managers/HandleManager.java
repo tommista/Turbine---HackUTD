@@ -22,6 +22,7 @@ public class HandleManager {
     private HandleManager(){
         handleList = new ArrayList<Handle>();
         handleList.add(new Handle("@thomasbrown333"));
+        handleList.add(new Handle("@jberidon"));
     }
 
     public void addHandle(Handle handle){

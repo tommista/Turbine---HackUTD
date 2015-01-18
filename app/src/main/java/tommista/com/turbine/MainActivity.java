@@ -22,7 +22,7 @@ public class MainActivity extends ActionBarActivity {
             // TODO eventually put remote logging into a tree and put here.
         }
 
-        dataFetcher = new DataFetcher();
+        dataFetcher = new DataFetcher(this);
 
         Timber.i("asdf");
         /*TwitterAPI twitterApi = TwitterAPI.getInstance();
@@ -56,8 +56,12 @@ public class MainActivity extends ActionBarActivity {
             }
         });*/
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_view);
 
+    }
+
+    public void refresh(){
+        setContentView(R.layout.main_view);
     }
 
     @Override
