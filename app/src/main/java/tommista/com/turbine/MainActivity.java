@@ -11,6 +11,7 @@ import timber.log.Timber;
 public class MainActivity extends ActionBarActivity {
 
     public DataFetcher dataFetcher;
+    private int currentDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,39 +24,9 @@ public class MainActivity extends ActionBarActivity {
         }
 
         dataFetcher = new DataFetcher(this);
+        dataFetcher.refreshButtonPressed();
 
-        Timber.i("asdf");
-        /*TwitterAPI twitterApi = TwitterAPI.getInstance();
-
-        twitterApi.timelineServices.getUserTimeline("@thomasbrown333", 1, new Callback<List<Tweet>>() {
-            @Override
-            public void success(List<Tweet> list, Response response) {
-                Timber.i("success %d", list.size());
-                Timber.i("asdf " + list.get(0).toString());
-                String tempStr = list.get(0).toString();
-
-                Util.unshortenUrl(tempStr, new Callback<UnshortenResponse>() {
-                    @Override
-                    public void success(UnshortenResponse unshortenResponse, Response response2) {
-                        Timber.i("unshorten success: " + unshortenResponse.fullUrl);
-                    }
-
-                    @Override
-                    public void failure(RetrofitError error) {
-                        Timber.i("unshorten failure");
-                        Timber.i(error.toString());
-                    }
-                });
-
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Timber.i("unfortunate failure");
-                Timber.i(error.toString());
-            }
-        });*/
-
+        currentDisplay = 0;
         setContentView(R.layout.main_view);
 
     }
@@ -81,6 +52,7 @@ public class MainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Timber.i("action button hit");
+            currentDisplay = 1;
             setContentView(R.layout.settings_view);
             return true;
         }
@@ -91,5 +63,16 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Timber.i("back button pressed");
+        if(currentDisplay == 0){
+            super.onBackPressed();
+        }else if(currentDisplay == 1){
+            currentDisplay = 0;
+            setContentView(R.layout.main_view);
+        }
     }
 }
