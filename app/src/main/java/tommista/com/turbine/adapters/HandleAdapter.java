@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 
 import timber.log.Timber;
@@ -28,7 +29,8 @@ public class HandleAdapter extends ArrayAdapter<Handle>{
         }
         */
 
-        if(handle != null){
+        View view;
+        if(convertView == null){
             LayoutInflater inflator = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflator.inflate(R.layout.handle_view, null);
         }
