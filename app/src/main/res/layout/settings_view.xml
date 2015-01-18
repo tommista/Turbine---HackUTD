@@ -35,13 +35,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:text="Add"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_style"/>
 
             <EditText
                 android:id="@+id/edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@android:color/white"
+                android:background="@drawable/text_view_style"
                 android:textColor="@android:color/black"
                 android:hint="Twitter Handle"
                 android:lines="1"

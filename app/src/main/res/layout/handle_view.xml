@@ -9,7 +9,7 @@
     android:paddingBottom="10dp"
     android:paddingTop="10dp"
     android:layout_centerVertical="true"
-    android:background="#BAEBAE"
+    android:background="@drawable/handle_view_background"
     >
 
         <TextView
@@ -27,6 +27,7 @@
             android:layout_weight="1"
             android:layout_alignParentRight="true"
             android:text="Delete"
+            android:background="@drawable/delete_button_background"
             />
 
 </RelativeLayout>
