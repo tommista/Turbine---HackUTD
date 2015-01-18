@@ -84,6 +84,10 @@ public class MainActivity extends ActionBarActivity {
             setContentView(R.layout.settings_view);
             return true;
         }
+        else if(id == R.id.action_refresh){
+            Timber.i("refresh button hit");
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

@@ -8,16 +8,16 @@ import com.google.gson.annotations.SerializedName;
 public class Tweet {
 
     @SerializedName("id_str")
-    String tweetId;
+    public String tweetId;
 
     @SerializedName("text")
-    String tweetText;
+    public String tweetText;
 
     @SerializedName("profile_image_url")
-    String profileImageURL;
+    public String profileImageURL;
 
     @SerializedName("entities")
-    TweetEntities tweetEntities;
+    public TweetEntities tweetEntities;
 
     @Override
     public String toString(){
