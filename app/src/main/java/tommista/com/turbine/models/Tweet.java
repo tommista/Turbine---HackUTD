@@ -14,9 +14,13 @@ public class Tweet {
         this.screenName = tweet.screenName;
         this.tweetEntities = tweet.tweetEntities;
         this.goodUrl = tweet.goodUrl;
+        this.createdAt = tweet.createdAt;
     }
 
     public String goodUrl;
+
+    @SerializedName("created_at")
+    public String createdAt;
 
     @SerializedName("id_str")
     public String tweetId;

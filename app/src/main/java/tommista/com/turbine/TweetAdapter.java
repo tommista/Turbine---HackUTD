@@ -37,6 +37,7 @@ public class TweetAdapter extends ArrayAdapter<Tweet>{
         ImageView imageView = (ImageView) convertView.findViewById(R.id.main_image_view);
         TextView handleTextView = (TextView) convertView.findViewById(R.id.main_handle_text_view);
         TextView urlTextView = (TextView) convertView.findViewById(R.id.main_url_link);
+        TextView dateTextView = (TextView) convertView.findViewById(R.id.main_handle_tweet_date);
 
         Picasso.with(getContext()).load(tweet.user.profileImageURL).into(imageView, new com.squareup.picasso.Callback() {
             @Override
@@ -54,6 +55,13 @@ public class TweetAdapter extends ArrayAdapter<Tweet>{
         //urlTextView.setText(tweet.goodUrl);
         //urlTextView.setText(Html.fromHtml(String.format("<a href=\"%s\">%s</a", tweet.goodUrl, tweet.goodUrl)));
         urlTextView.setText(tweet.tweetText);
+
+        String createdAt = tweet.createdAt;
+
+        createdAt = createdAt.substring(0, createdAt.indexOf("+"));
+        createdAt = createdAt.substring(0, createdAt.length() - 9);
+
+        dateTextView.setText(createdAt);
         return convertView;
     }
 }
