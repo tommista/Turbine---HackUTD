@@ -59,7 +59,7 @@ public class DataFetcher {
     }
 
     private void getTweetsForHandle(final Handle handle){
-        TwitterAPI.getInstance().timelineServices.getUserTimeline(handle.getTwitterHandle(), 5, new Callback<List<Tweet>>() {
+        TwitterAPI.getInstance().timelineServices.getUserTimeline(handle.getTwitterHandle(), 10, new Callback<List<Tweet>>() {
             @Override
             public void success(List<Tweet> list, Response response) {
                 Timber.i("Successfully downloaded timeline for %s with %d tweets", handle.getTwitterHandle(), list.size());

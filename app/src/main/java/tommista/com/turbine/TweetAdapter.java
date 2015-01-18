@@ -1,7 +1,6 @@
 package tommista.com.turbine;
 
 import android.content.Context;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +52,8 @@ public class TweetAdapter extends ArrayAdapter<Tweet>{
 
         handleTextView.setText(tweet.screenName);
         //urlTextView.setText(tweet.goodUrl);
-        urlTextView.setText(Html.fromHtml(String.format("<a href=\"%s\">%s</a", tweet.goodUrl, tweet.goodUrl)));
+        //urlTextView.setText(Html.fromHtml(String.format("<a href=\"%s\">%s</a", tweet.goodUrl, tweet.goodUrl)));
+        urlTextView.setText(tweet.tweetText);
         return convertView;
     }
 }
