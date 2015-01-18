@@ -3,20 +3,15 @@ package tommista.com.turbine.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-
-import timber.log.Timber;
 import tommista.com.turbine.MainActivity;
 import tommista.com.turbine.R;
 import tommista.com.turbine.adapters.HandleAdapter;
 import tommista.com.turbine.managers.HandleManager;
-import tommista.com.turbine.models.Handle;
 
 /**
  * Created by tbrown on 1/17/15.
@@ -52,11 +47,23 @@ public class SettingsView extends LinearLayout {
                 eText = (EditText) findViewById(R.id.edit_text);
                 String name = eText.getText().toString();
                 if (name.isEmpty()) return;
+                if(!name.startsWith("@")){
+                    name = "@" + name;
+                }
                 HandleManager.getInstance().addHandle(name);
                 MainActivity.getInstance().resetSettings();
+                hideInputMethod(v);
             }
         });
         listView.setAdapter(adapter);
     }
+    private void hideInputMethod(View view) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null && view != null) {
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+
 
 }
