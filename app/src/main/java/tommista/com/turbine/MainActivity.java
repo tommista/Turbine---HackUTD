@@ -85,6 +85,7 @@ public class MainActivity extends ActionBarActivity {
         }else if(currentDisplay == 1){
             currentDisplay = 0;
             setContentView(R.layout.main_view);
+            dataFetcher.refreshButtonPressed();
         }
     }
 }
