@@ -2,6 +2,8 @@ package tommista.com.turbine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -23,10 +25,24 @@ public class DataFetcher {
     TweetManager tweetManager;
     MainActivity mainActivity;
 
+    Timer timer;
+
+    TimerTask timerTask;
+
     public DataFetcher(MainActivity mainActivity){
         handleManager = HandleManager.getInstance();
         tweetManager = TweetManager.getInstance();
         this.mainActivity = mainActivity;
+
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                refresh();
+            }
+        };
+
+        timer = new Timer("TurbineTimer");
+        timer.scheduleAtFixedRate(timerTask, 300000, 300000);
     }
 
     public void refreshButtonPressed(){
