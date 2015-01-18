@@ -11,6 +11,7 @@
     android:layout_centerVertical="true"
     android:background="#BAEBAE"
     >
+
         <TextView
             android:id="@+id/handle_text"
             android:layout_width="fill_parent"

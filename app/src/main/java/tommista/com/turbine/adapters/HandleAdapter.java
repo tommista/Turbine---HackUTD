@@ -25,7 +25,7 @@ public class HandleAdapter extends ArrayAdapter<Handle>{
 
 
     public HandleAdapter(Context context, ArrayList<Handle> handles) {
-        super(context, R.layout.handle_view , handles);
+        super(context, R.layout.handle_view , (ArrayList<Handle>)handles.clone());
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
