@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="100dp"
-    android:paddingLeft="10dp">
+    android:paddingLeft="0dp">
 
     <ImageView
         android:id="@+id/main_image_view"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"/>
 
     <TextView
         android:id="@+id/main_handle_text_view"
@@ -18,7 +19,7 @@
         android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/main_image_view"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textColor="@android:color/black"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"/>
@@ -27,12 +28,12 @@
         android:id="@+id/main_url_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/main_image_view"
         android:layout_toEndOf="@+id/main_handle_text_view"
         android:textColor="@android:color/black"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:paddingTop="32dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:autoLink="web"
         android:lines="4"
         android:textColorLink="#F29319"/>

@@ -11,7 +11,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="25dp"
         android:background="#59708e"/>
 
     <LinearLayout
@@ -29,29 +29,35 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_centerVertical="true"
+            android:weightSum="2"
+            android:layout_marginBottom="10dp"
             >
-            <Button
-                android:id="@+id/add_button"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="Add"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/button_style"/>
 
             <EditText
                 android:id="@+id/edit_text"
-                android:layout_width="match_parent"
+                android:layout_width="230dp"
                 android:layout_height="50dp"
                 android:background="@drawable/text_view_style"
                 android:textColor="@android:color/black"
                 android:hint="Twitter Handle"
                 android:lines="1"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft= "15dp"
+                android:layout_marginRight= "15dp"
+                android:layout_weight="1"
                 />
 
+            <Button
+                android:id="@+id/add_button"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Add"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_style"/>
 
-                          </LinearLayout>
+
+           </LinearLayout>
 
         <ListView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/listview"
