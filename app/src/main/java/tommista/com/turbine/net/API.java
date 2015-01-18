@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import tommista.com.turbine.net.services.OauthService;
+import tommista.com.turbine.net.services.TimelineServices;
 
 /**
  * Created by tbrown on 1/17/15.
@@ -18,6 +19,7 @@ public class API {
     private RequestInterceptor reqInterceptor;
 
     public OauthService oauthService;
+    public TimelineServices timelineServices;
 
     public Gson gson;
 
@@ -30,7 +32,7 @@ public class API {
 
     public API() {
         gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .create();
 
         reqInterceptor = new RequestInterceptor() {
@@ -48,5 +50,6 @@ public class API {
                 .build();
 
         oauthService = restAdapter.create(OauthService.class);
+        timelineServices = restAdapter.create(TimelineServices.class);
     }
 }

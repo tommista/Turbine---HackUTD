@@ -5,7 +5,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 import timber.log.Timber;
+import tommista.com.turbine.net.API;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -20,9 +24,22 @@ public class MainActivity extends ActionBarActivity {
             // TODO eventually put remote logging into a tree and put here.
         }
 
-        /*Timber.i("asdf");
+        Timber.i("asdf");
         API api = API.getInstance();
-        api.oauthService.getOauthToken(new OauthHelper(), new Callback<Response>() {
+
+        api.timelineServices.getUserTimeline("@MisterWives", 5, new Callback<Response>() {
+            @Override
+            public void success(Response response, Response response2) {
+                Timber.i("success");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Timber.i("unfortunate failure");
+            }
+        });
+
+        /*api.oauthService.getOauthToken(new OauthHelper(), new Callback<Response>() {
             @Override
             public void success(Response response, Response response2) {
                 Timber.i("success");
@@ -34,6 +51,7 @@ public class MainActivity extends ActionBarActivity {
                 Timber.i(error.toString());
             }
         });*/
+
 
         setContentView(R.layout.activity_main);
 
