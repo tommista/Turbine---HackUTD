@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import timber.log.Timber;
@@ -24,7 +26,7 @@ public class TweetAdapter extends ArrayAdapter<Tweet>{
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent){
-        Tweet tweet = getItem(position);
+        final Tweet tweet = getItem(position);
 
         if(convertView == null){
             LayoutInflater inflator = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -32,12 +34,22 @@ public class TweetAdapter extends ArrayAdapter<Tweet>{
         }
 
 
-        Timber.i("Tweet screenName: %s", tweet.screenName);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.main_image_view);
         TextView handleTextView = (TextView) convertView.findViewById(R.id.main_handle_text_view);
         TextView urlTextView = (TextView) convertView.findViewById(R.id.main_url_link);
 
-        imageView.setImageResource(R.drawable.box);
+        Picasso.with(getContext()).load(tweet.user.profileImageURL).into(imageView, new com.squareup.picasso.Callback() {
+            @Override
+            public void onSuccess() {
+                Timber.i("picasso success for url: %s", tweet.user.profileImageURL);
+            }
+
+            @Override
+            public void onError() {
+                Timber.i("picasso failure for url: %s", tweet.user.profileImageURL);
+            }
+        });
+
         handleTextView.setText(tweet.screenName);
         urlTextView.setText(tweet.goodUrl);
         return convertView;

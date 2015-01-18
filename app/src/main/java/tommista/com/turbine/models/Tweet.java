@@ -10,7 +10,7 @@ public class Tweet {
     public Tweet(Tweet tweet){
         this.tweetId = tweet.tweetId;
         this.tweetText = tweet.tweetText;
-        this.profileImageURL = tweet.profileImageURL;
+        this.user = tweet.user;
         this.screenName = tweet.screenName;
         this.tweetEntities = tweet.tweetEntities;
         this.goodUrl = tweet.goodUrl;
@@ -24,8 +24,8 @@ public class Tweet {
     @SerializedName("text")
     public String tweetText;
 
-    @SerializedName("profile_image_url")
-    public String profileImageURL;
+    @SerializedName("user")
+    public User user;
 
     @SerializedName("entities")
     public TweetEntities tweetEntities;
