@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import timber.log.Timber;
+import tommista.com.turbine.MainActivity;
 import tommista.com.turbine.R;
 import tommista.com.turbine.managers.HandleManager;
 import tommista.com.turbine.models.Handle;
@@ -46,6 +47,8 @@ public class HandleAdapter extends ArrayAdapter<Handle>{
             @Override
             public void onClick(View v) {
                 HandleManager.getInstance().deleteHandle(getItem(position).getTwitterHandle());
+
+                MainActivity.getInstance().resetSettings();
             }
         });
         handle_text.setText(handle.getTwitterHandle());

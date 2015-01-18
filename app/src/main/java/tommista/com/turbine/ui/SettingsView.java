@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import timber.log.Timber;
+import tommista.com.turbine.MainActivity;
 import tommista.com.turbine.R;
 import tommista.com.turbine.adapters.HandleAdapter;
 import tommista.com.turbine.managers.HandleManager;
@@ -55,10 +56,10 @@ public class SettingsView extends LinearLayout {
                 if(eText.getText() == null){
 
                 }else{
-                Handle handle = new Handle(eText.getText().toString());
-                HandleManager.getInstance().addHandle(handle);
-                    adapter.add(handle);
-                    listView.deferNotifyDataSetChanged();
+                    Handle handle = new Handle(eText.getText().toString());
+                    HandleManager.getInstance().addHandle(handle);
+                    MainActivity.getInstance().resetSettings();
+
                 }
 
 

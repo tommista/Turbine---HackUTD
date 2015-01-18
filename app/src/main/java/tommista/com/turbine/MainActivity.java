@@ -10,11 +10,19 @@ import timber.log.Timber;
 
 public class MainActivity extends ActionBarActivity {
 
+    public static MainActivity instance;
+
+    public static MainActivity getInstance(){
+        return instance;
+    }
+
     public DataFetcher dataFetcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        instance = this;
 
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
@@ -62,6 +70,10 @@ public class MainActivity extends ActionBarActivity {
 
     public void refresh(){
         setContentView(R.layout.main_view);
+    }
+
+    public void resetSettings(){
+        setContentView(R.layout.settings_view);
     }
 
     @Override

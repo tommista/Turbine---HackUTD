@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:weightSum="2">
+    android:weightSum="2"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
+    android:layout_centerVertical="true"
+    >
         <TextView
             android:id="@+id/handle_text"
             android:layout_width="fill_parent"
@@ -11,9 +17,11 @@
             android:layout_weight="1"/>
         <Button
             android:id="@+id/del_button"
-            android:layout_width="fill_parent"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_alignParentRight="true"
+            android:text="Delete"
             />
 
-</LinearLayout>
+</RelativeLayout>

@@ -30,7 +30,7 @@ public class HandleManager {
     }
 
     public void deleteHandle(String handleName) {
-        synchronized (handleList) {
+
             for (Handle handle : handleList) {
                 if (handle.getTwitterHandle().compareTo(handleName) == 0) {
 
@@ -38,7 +38,7 @@ public class HandleManager {
 
                 }
             }
-        }
+
     }
 
 
