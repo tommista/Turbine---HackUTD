@@ -34,6 +34,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="40dp"
         android:autoLink="web"
-        android:lines="3"/>
+        android:lines="3"
+        android:textColorLink="@android:color/black"/>
 
 </RelativeLayout>
