@@ -40,7 +40,7 @@ public class HandleManager {
 
             for (Handle handle : handleList) {
                 if (handle.getTwitterHandle().compareTo(handleName) == 0) {
-
+                        TweetManager.getInstance().deleteTweetsByHandle(handle);
                         handleList.remove(handle);
 
                 }
