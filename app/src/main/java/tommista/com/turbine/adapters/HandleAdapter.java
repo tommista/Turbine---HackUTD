@@ -30,10 +30,7 @@ public class HandleAdapter extends ArrayAdapter<Handle>{
     public View getView(final int position, View convertView, ViewGroup parent) {
         Handle handle = getItem(position);
         Timber.i("position=%d,handle=%s", position, handle.getTwitterHandle());
-        /*if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.handle_view, parent, false);
-        }
-        */
+
 
 
         View view;
