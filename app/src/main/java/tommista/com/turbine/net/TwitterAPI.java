@@ -12,9 +12,9 @@ import tommista.com.turbine.net.services.TimelineServices;
 /**
  * Created by tbrown on 1/17/15.
  */
-public class API {
+public class TwitterAPI {
     private static final String SERVER_ADDRESS = "https://api.twitter.com";
-    private static API instance;
+    private static TwitterAPI instance;
     private final RestAdapter restAdapter;
     private RequestInterceptor reqInterceptor;
 
@@ -23,14 +23,14 @@ public class API {
 
     public Gson gson;
 
-    public static API getInstance() {
+    public static TwitterAPI getInstance() {
         if (instance == null) {
-            instance = new API();
+            instance = new TwitterAPI();
         }
         return instance;
     }
 
-    public API() {
+    public TwitterAPI() {
         gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .create();

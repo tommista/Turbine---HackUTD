@@ -12,7 +12,8 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import timber.log.Timber;
 import tommista.com.turbine.models.Tweet;
-import tommista.com.turbine.net.API;
+import tommista.com.turbine.net.TwitterAPI;
+import tommista.com.turbine.net.UnshortenResponse;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -28,13 +29,28 @@ public class MainActivity extends ActionBarActivity {
         }
 
         Timber.i("asdf");
-        API api = API.getInstance();
+        TwitterAPI twitterApi = TwitterAPI.getInstance();
 
-        api.timelineServices.getUserTimeline("@thomasbrown333", 1, new Callback<List<Tweet>>() {
+        twitterApi.timelineServices.getUserTimeline("@thomasbrown333", 1, new Callback<List<Tweet>>() {
             @Override
             public void success(List<Tweet> list, Response response) {
                 Timber.i("success %d", list.size());
                 Timber.i("asdf " + list.get(0).toString());
+                String tempStr = list.get(0).toString();
+
+                Util.unshortenUrl(tempStr, new Callback<UnshortenResponse>() {
+                    @Override
+                    public void success(UnshortenResponse unshortenResponse, Response response2) {
+                        Timber.i("unshorten success: " + unshortenResponse.fullUrl);
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        Timber.i("unshorten failure");
+                        Timber.i(error.toString());
+                    }
+                });
+
             }
 
             @Override
@@ -44,24 +60,9 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        /*api.oauthService.getOauthToken(new OauthHelper(), new Callback<Response>() {
-            @Override
-            public void success(Response response, Response response2) {
-                Timber.i("success");
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Timber.i("tragic failure");
-                Timber.i(error.toString());
-            }
-        });*/
-
-
         setContentView(R.layout.activity_main);
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
