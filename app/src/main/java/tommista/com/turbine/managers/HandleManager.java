@@ -25,8 +25,15 @@ public class HandleManager {
         //handleList.add(new Handle("@jberidon"));
     }
 
-    public void addHandle(Handle handle) {
-        handleList.add(handle);
+    public void addHandle(String name) {
+        boolean add = true;
+        for (Handle handle : handleList) {
+            if (handle.getTwitterHandle().equals(name)) {
+                add = false;
+                break;
+            }
+        }
+        if (add) handleList.add(new Handle(name));
     }
 
     public void deleteHandle(String handleName) {

@@ -50,48 +50,12 @@ public class SettingsView extends LinearLayout {
             @Override
             public void onClick(View v) {
                 eText = (EditText) findViewById(R.id.edit_text);
-
-
-                Handle newHandle;
-                if((eText.getText() != null)&&(eText.getText().length()>0)){
-                    if (HandleManager.getInstance().getHandleList().size()==0){
-                        newHandle = new Handle(eText.getText().toString());
-                        HandleManager.getInstance().addHandle(newHandle);
-                        eText.setText("");
-                        adapter.notifyDataSetChanged();
-
-                    }
-                    else{
-                        for (Handle handle : HandleManager.getInstance().getHandleList()){
-                            if (handle.getTwitterHandle().compareTo(eText.getText().toString()) == 0) {
-
-
-                            }
-                            else{
-                                newHandle = new Handle(eText.getText().toString());
-                                HandleManager.getInstance().addHandle(newHandle);
-                                eText.setText("");
-                                adapter.notifyDataSetChanged();
-                            }
-                        }
-
-                    }
-
-
-
-
-
-
-
-                }
+                String name = eText.getText().toString();
+                if (name.isEmpty()) return;
+                HandleManager.getInstance().addHandle(name);
+                MainActivity.getInstance().resetSettings();
             }
         });
-
-
-
-
-
-
         listView.setAdapter(adapter);
     }
 

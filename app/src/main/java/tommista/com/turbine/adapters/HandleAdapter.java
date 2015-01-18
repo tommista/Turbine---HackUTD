@@ -47,7 +47,6 @@ public class HandleAdapter extends ArrayAdapter<Handle>{
             @Override
             public void onClick(View v) {
                 HandleManager.getInstance().deleteHandle(getItem(position).getTwitterHandle());
-
                 MainActivity.getInstance().resetSettings();
             }
         });
