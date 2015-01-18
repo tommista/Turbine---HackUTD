@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright"
+    android:background="@android:color/white"
     >
     <LinearLayout
         android:id="@+id/ver_layout"
@@ -19,18 +19,16 @@
             android:orientation="horizontal">
             <Button
                 android:id="@+id/add_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Add">
-                <!--Button shit still needs to go here -->
-                </Button>
-
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
             <EditText
                 android:id="@+id/add"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <!--text field shit still needs to go here? -->
-                </EditText>
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:textColor="@android:color/black"
+                android:hint="Add"/>
+
 
                           </LinearLayout>
 
