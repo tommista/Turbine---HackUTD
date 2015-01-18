@@ -13,6 +13,6 @@ import tommista.com.turbine.net.OauthHelper;
 public interface OauthService {
 
     @Headers("Content-Type: application/x-www-form-urlencoded;charset=UTF-8")
-    @POST("/oauth2/token HTTP/1.1")
+    @POST("/oauth2/token")
     void getOauthToken(@Body OauthHelper helper, Callback<Response> callback);
 }
