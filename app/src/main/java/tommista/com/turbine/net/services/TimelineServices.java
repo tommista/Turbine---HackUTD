@@ -1,9 +1,11 @@
 package tommista.com.turbine.net.services;
 
+import java.util.List;
+
 import retrofit.Callback;
-import retrofit.client.Response;
 import retrofit.http.GET;
 import retrofit.http.Query;
+import tommista.com.turbine.models.Tweet;
 
 /**
  * Created by tbrown on 1/17/15.
@@ -11,5 +13,5 @@ import retrofit.http.Query;
 public interface TimelineServices {
 
     @GET("/1.1/statuses/user_timeline.json")
-    void getUserTimeline(@Query("screen_name") String screenName, @Query("count") int count, Callback<Response> callback);
+    void getUserTimeline(@Query("screen_name") String screenName, @Query("count") int count, Callback<List<Tweet>> callback);
 }

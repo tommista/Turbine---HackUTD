@@ -5,10 +5,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.List;
+
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import timber.log.Timber;
+import tommista.com.turbine.models.Tweet;
 import tommista.com.turbine.net.API;
 
 
@@ -27,15 +30,17 @@ public class MainActivity extends ActionBarActivity {
         Timber.i("asdf");
         API api = API.getInstance();
 
-        api.timelineServices.getUserTimeline("@MisterWives", 5, new Callback<Response>() {
+        api.timelineServices.getUserTimeline("@thomasbrown333", 1, new Callback<List<Tweet>>() {
             @Override
-            public void success(Response response, Response response2) {
-                Timber.i("success");
+            public void success(List<Tweet> list, Response response) {
+                Timber.i("success %d", list.size());
+                Timber.i("asdf " + list.get(0).toString());
             }
 
             @Override
             public void failure(RetrofitError error) {
                 Timber.i("unfortunate failure");
+                Timber.i(error.toString());
             }
         });
 
