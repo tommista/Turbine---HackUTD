@@ -5,18 +5,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.List;
-
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 import timber.log.Timber;
-import tommista.com.turbine.models.Tweet;
-import tommista.com.turbine.net.TwitterAPI;
-import tommista.com.turbine.net.UnshortenResponse;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    public DataFetcher dataFetcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +22,10 @@ public class MainActivity extends ActionBarActivity {
             // TODO eventually put remote logging into a tree and put here.
         }
 
+        dataFetcher = new DataFetcher();
+
         Timber.i("asdf");
-        TwitterAPI twitterApi = TwitterAPI.getInstance();
+        /*TwitterAPI twitterApi = TwitterAPI.getInstance();
 
         twitterApi.timelineServices.getUserTimeline("@thomasbrown333", 1, new Callback<List<Tweet>>() {
             @Override
@@ -58,7 +54,7 @@ public class MainActivity extends ActionBarActivity {
                 Timber.i("unfortunate failure");
                 Timber.i(error.toString());
             }
-        });
+        });*/
 
         setContentView(R.layout.activity_main);
 
@@ -86,6 +82,7 @@ public class MainActivity extends ActionBarActivity {
         }
         else if(id == R.id.action_refresh){
             Timber.i("refresh button hit");
+            dataFetcher.refreshButtonPressed();
             return true;
         }
 
